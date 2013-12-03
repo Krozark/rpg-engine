@@ -10,7 +10,6 @@ namespace rpg
         for(Entity* e : entitys)
         {
             turns.emplace_back(*e);
-            turns.back().initBasic();
         }
     }
 

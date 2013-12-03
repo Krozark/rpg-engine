@@ -25,12 +25,16 @@ namespace rpg
 
             EntityTurn(Entity& related_entity);
 
+            void skip();
+
 
         private:
             friend class Turn;
             
             void initBasic();
             void start();
+
+            bool skipped;
 
             std::stack<TurnPhase*> stack;
             Entity& entity;

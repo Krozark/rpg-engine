@@ -11,7 +11,7 @@ namespace rpg
     class EntityControlerConsol : public EntityControler
     {
         public:
-            EntityControlerConsol(const Entity& entity);
+            EntityControlerConsol(Entity& entity);
             EntityControlerConsol(const EntityControlerConsol&) = delete;
             EntityControlerConsol& operator=(const EntityControlerConsol&) = delete;
 

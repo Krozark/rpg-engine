@@ -4,10 +4,17 @@
 #include <string>
 #include <iostream>
 
+#include <rpg-engine/Point.hpp>
+
 namespace rpg
 {
     class EntityTurn;
+    class TurnPhaseMouvement;
+    class TurnPhaseMagical;
+    class TurnPhasePhysical;
+
     class TurnGameBased;
+    class EntityControler;
 
     /**
      * \brief Base class for entity
@@ -31,18 +38,29 @@ namespace rpg
             void setBattle(TurnGameBased& battle);
             void exitBattle();
 
+            void move(int x,int y);
+
         protected:
             friend class EntityTurn;
-            void onStartTurn(){};
-            void onEndTurn(){};
+            friend class TurnPhaseMouvement;
+            friend class TurnPhaseMagical;
+            friend class TurnPhasePhysical;
+
+            void onStartTurn();///<\todo as virtual
+            void onEndTurn();///<\todo as virtual
+
+            EntityControler& getControler();///<\todo as virtual
 
         private:
             int mouvement;
             std::string name;
             int hp;
             TurnGameBased* currentBattlefield;
-            ///\todo Controleur& getControleur() = 0;
 
+            math::Point<int> position;
+
+
+            EntityControler* controler;///<\todo remove it and replace as globale for each clase heritate
     };
 }
 #endif

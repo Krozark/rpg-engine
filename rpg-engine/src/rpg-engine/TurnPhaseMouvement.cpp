@@ -2,6 +2,8 @@
 
 #include <iostream> 
 
+#include <rpg-engine/EntityControler.hpp>
+
 namespace rpg
 {
     
@@ -17,5 +19,6 @@ namespace rpg
     void TurnPhaseMouvement::exec(Entity& entity)
     {
         std::cout<<entity<<": Mouvement Phase"<<std::endl;
+        entity.getControler().getChoiceForMove();
     }
 }

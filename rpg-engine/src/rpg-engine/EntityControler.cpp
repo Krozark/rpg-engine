@@ -4,7 +4,7 @@
 
 namespace rpg
 {
-    EntityControler::EntityControler(const Entity& entity) : related_entity(entity)
+    EntityControler::EntityControler(Entity& entity) : related_entity(entity)
     {
     }
 }

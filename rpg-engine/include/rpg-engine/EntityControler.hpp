@@ -14,7 +14,7 @@ namespace rpg
     class EntityControler
     {
         public:
-            EntityControler(const Entity& entity);
+            EntityControler(Entity& entity);
             EntityControler(const EntityControler&) = delete;
             EntityControler& operator=(const EntityControler&) = delete;
 
@@ -23,8 +23,8 @@ namespace rpg
             virtual void getChoiceForMagical() = 0;
             virtual void getChoiceForPhysical() = 0;
 
-        private:
-            const Entity& related_entity;
+        protected:
+            Entity& related_entity;
     };
 }
 #endif

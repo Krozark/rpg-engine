@@ -7,8 +7,13 @@
 namespace rpg
 {
     
-    EntityTurn::EntityTurn(Entity& related_entity) : entity(related_entity)
+    EntityTurn::EntityTurn(Entity& related_entity) : entity(related_entity), skipped(false)
     {
+    }
+
+    void EntityTurn::skip()
+    {
+        skipped=true;
     }
 
     void EntityTurn::initBasic()
@@ -24,15 +29,23 @@ namespace rpg
     {
         entity.onStartTurn();
 
-        while(stack.size()>0)
+        if (not skipped)
         {
-            TurnPhase* phase = stack.top();
-            stack.pop();
-            if (phase->canExec(entity))
+            initBasic();
+            while(stack.size()>0)
             {
-                phase->exec(entity);
+                TurnPhase* phase = stack.top();
+                stack.pop();
+                if (phase->canExec(entity))
+                {
+                    phase->exec(entity);
+                }
+                delete phase;
             }
-            delete phase;
+        }
+        else
+        {
+            ///\todo entity.onSkip()
         }
 
         entity.onEndTurn();
