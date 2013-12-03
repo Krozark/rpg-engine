@@ -2,28 +2,36 @@
 #define RPG_ENTITYTURN_HPP
 
 #include <rpg-engine/TurnPhase.hpp>
-#include <stack>
 #include <rpg-engine/Entity.hpp>
+#include <rpg-engine/Action.hpp>
+
+#include <stack>
+#include <list>
 
 namespace rpg
 {
+    class Turn;
+
     class EntityTurn
     {
         public:
-            EntityTurn(Entity& related_entity);
             EntityTurn(const EntityTurn&) = delete;
             EntityTurn& operator=(const EntityTurn&) = delete;
             EntityTurn(EntityTurn&&) = default;
             EntityTurn& operator=(EntityTurn&&) = default;
 
-        //protected:
+            EntityTurn(Entity& related_entity);
+
+
+        private:
+            friend class Turn;
+            
             void initBasic();
             void start();
 
-        private:
             std::stack<TurnPhase*> stack;
             Entity& entity;
-            //list of actions makes
+            std::list<Action> actions;
     };
 }
 #endif

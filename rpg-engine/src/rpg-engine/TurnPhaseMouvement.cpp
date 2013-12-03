@@ -16,6 +16,6 @@ namespace rpg
 
     void TurnPhaseMouvement::exec(Entity& entity,EntityTurn& turn)
     {
-        std::cout<<"Mouvement Phase"<<std::endl;
+        std::cout<<entity<<": Mouvement Phase"<<std::endl;
     }
 }

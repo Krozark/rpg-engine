@@ -1,6 +1,9 @@
 #ifndef RPG_ENTITY_HPP
 #define RPG_ENTITY_HPP
 
+#include <string>
+#include <iostream>
+
 namespace rpg
 {
     class EntityTurn;
@@ -8,12 +11,17 @@ namespace rpg
     class Entity
     {
         public:
-            Entity();
+            Entity(const std::string& name,int hp);
             Entity(const Entity&) = delete;
             Entity& operator=(const Entity&) = delete;
 
 
             inline int getMouvement()const{return mouvement;};
+            int getDommage()const;
+
+            inline bool isAlive()const {return hp>0;}
+
+            friend std::ostream& operator<<(std::ostream& output,const Entity& self);
 
         protected:
             friend class EntityTurn;
@@ -22,6 +30,8 @@ namespace rpg
 
         private:
             int mouvement;
+            std::string name;
+            int hp;
     };
 }
 #endif
