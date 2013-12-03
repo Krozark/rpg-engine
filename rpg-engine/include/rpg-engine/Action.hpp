@@ -3,6 +3,10 @@
 
 namespace rpg
 {
+    /**
+     * \brief Class that have to encapsulate all passible action, with there reverse.
+     * Usefull for loging, and play with time spells, or chec if some actions have be made
+     */
     class Action
     {
         public:

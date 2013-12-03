@@ -5,6 +5,9 @@
 
 namespace rpg
 {
+    /**
+     * \brief Class to manage mouvement phase
+     */
     class TurnPhaseMouvement : public TurnPhase
     {
         public:

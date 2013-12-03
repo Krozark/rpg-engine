@@ -11,6 +11,9 @@ namespace rpg
     class Entity;
     class TurnGameBased;
 
+    /**
+     * \brief Class to manage a turn of multiple entity
+     */
     class Turn
     {
         public:

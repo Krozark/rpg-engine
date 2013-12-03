@@ -7,6 +7,10 @@ namespace rpg
 {
     class Entity;
 
+    /**
+     * \brief Base Class to control a entity.
+     * \todo Heritage : Socket, AI, Console, mouse + keyboard
+     */
     class EntityControler
     {
         public:

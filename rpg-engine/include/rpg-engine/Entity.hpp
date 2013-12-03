@@ -9,6 +9,10 @@ namespace rpg
     class EntityTurn;
     class TurnGameBased;
 
+    /**
+     * \brief Base class for entity
+     * \todo Heritage
+     */
     class Entity
     {
         public:

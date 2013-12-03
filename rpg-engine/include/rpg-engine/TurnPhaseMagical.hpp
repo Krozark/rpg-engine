@@ -5,6 +5,9 @@
 
 namespace rpg
 {
+    /**
+     * \brief class to manage Magical phase
+     */
     class TurnPhaseMagical : public TurnPhase
     {
         public:

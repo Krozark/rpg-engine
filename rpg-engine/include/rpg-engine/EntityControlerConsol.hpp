@@ -5,6 +5,9 @@
 
 namespace rpg
 {
+    /**
+     * \brief class that use console as main controler
+     */
     class EntityControlerConsol : public EntityControler
     {
         public:

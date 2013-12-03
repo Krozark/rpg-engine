@@ -7,6 +7,9 @@ namespace rpg
 {
     class EntityTurn;
 
+    /**
+     * \brief Class to manage a single phase of a specific entity
+     */
     class TurnPhase
     {
         public:

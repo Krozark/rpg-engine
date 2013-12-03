@@ -6,6 +6,9 @@
 
 namespace rpg
 {
+    /**
+     * \brief Class to manage Physical phase
+     */
     class TurnPhasePhysical : public TurnPhase
     {
         public:

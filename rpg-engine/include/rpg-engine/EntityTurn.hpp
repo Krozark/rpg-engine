@@ -12,6 +12,9 @@ namespace rpg
 {
     class Turn;
 
+    /**
+     * \brief Class to manage a single turn for one entity
+     */
     class EntityTurn
     {
         public:

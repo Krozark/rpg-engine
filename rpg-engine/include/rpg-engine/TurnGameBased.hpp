@@ -8,6 +8,9 @@
 
 namespace rpg
 {
+    /**
+     * \brief Class to manage a Turn Base moment with multiple entity
+     */
     class TurnGameBased
     {
         public:

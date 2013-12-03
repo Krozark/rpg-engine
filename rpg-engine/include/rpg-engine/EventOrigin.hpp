@@ -5,6 +5,9 @@
 
 namespace rpg
 {
+    /**
+    * \brief Class of testing
+    */
     class EventOrigin
     {
         public:
