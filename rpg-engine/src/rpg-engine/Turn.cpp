@@ -5,7 +5,7 @@
 namespace rpg
 {
     
-    Turn::Turn(const std::list<Entity*>& entitys)/*: current(turns.end())*/
+    Turn::Turn(const std::list<Entity*>& entitys): current(turns.end())
     {
         for(Entity* e : entitys)
         {
@@ -14,9 +14,14 @@ namespace rpg
         }
     }
 
+    EntityTurn& Turn::getCurrentTurn()const
+    {
+        return *current;
+    }
+
     void Turn::start()
     {
-        auto current = turns.begin();
+        current = turns.begin();
         while(current!=turns.end())
         {
             current->start();

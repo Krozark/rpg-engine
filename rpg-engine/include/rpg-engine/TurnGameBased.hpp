@@ -15,7 +15,8 @@ namespace rpg
             TurnGameBased(const TurnGameBased&) = delete;
             TurnGameBased& operator=(const TurnGameBased&) = delete;
 
-            Turn& getCurrent()const;
+            Turn& getCurrentTurn()const;
+            EntityTurn& getCurrentEntityTurn()const;
 
             void start();
             void quit(const Entity& entity);
@@ -24,7 +25,7 @@ namespace rpg
             std::list<Turn> turns;
             std::list<Action> actions;
 
-            //std::list<Turn>::interator current;
+            std::list<Turn>::iterator current;
 
             void newTurn();
             std::list<Entity*> entitys;

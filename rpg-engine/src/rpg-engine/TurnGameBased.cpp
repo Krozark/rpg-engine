@@ -3,8 +3,18 @@
 namespace rpg
 {
     
-    TurnGameBased::TurnGameBased() /*: current(turns.end())*/
+    TurnGameBased::TurnGameBased(): current(turns.end())
     {
+    }
+
+    Turn& TurnGameBased::getCurrentTurn()const
+    {
+        return *current;
+    }
+
+    EntityTurn& TurnGameBased::getCurrentEntityTurn()const
+    {
+        return current->getCurrentTurn();
     }
 
     void TurnGameBased::add(Entity& entity)
@@ -18,14 +28,14 @@ namespace rpg
 
     void TurnGameBased::start()
     {
-        newTurn();
-        auto current = turns.begin();
+        current = turns.begin();
 
         while(entitys.size()>0)
         {
             if(current == turns.end())
             {
                 newTurn();
+                --current;
             }
             current->start();
             ++current;
@@ -39,6 +49,7 @@ namespace rpg
 
     void TurnGameBased::newTurn()
     {
+        std::cout<<"new Turn"<<std::endl;
         turns.emplace_back(entitys);
     }
 }

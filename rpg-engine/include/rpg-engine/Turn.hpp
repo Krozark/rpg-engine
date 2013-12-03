@@ -19,7 +19,7 @@ namespace rpg
 
             Turn(const std::list<Entity*>& entitys);
 
-            //EntityTurn& getCurrent()const;
+            EntityTurn& getCurrentTurn()const;
 
         private:
             friend class TurnGameBased;
@@ -29,7 +29,7 @@ namespace rpg
             std::list<EntityTurn> turns;
             std::list<Action> actions;
 
-            //std::list<EntityTurn>::interator current;
+            std::list<EntityTurn>::iterator current;
 
     };
 }

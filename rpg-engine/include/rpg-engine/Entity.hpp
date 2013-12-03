@@ -37,6 +37,7 @@ namespace rpg
             std::string name;
             int hp;
             TurnGameBased* currentBattlefield;
+            ///\todo Controleur& getControleur() = 0;
 
     };
 }
