@@ -22,9 +22,9 @@ int main(int argc,char* argv[])
         ,E("E",70);
 
     rpg::TurnGameBased fight;
-    fight.add(C);
-    fight.add(D);
-    fight.add(E);
+    C.setBattle(fight);
+    //fight.add(D);
+    //fight.add(E);
 
     fight.start();
 

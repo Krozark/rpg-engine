@@ -18,7 +18,7 @@ namespace rpg
         protected:
             friend class EntityTurn;
             virtual bool canExec(const Entity& entity) = 0;
-            virtual void exec(Entity& entity,EntityTurn& turn) = 0;
+            virtual void exec(Entity& entity) = 0;
 
         private:
 

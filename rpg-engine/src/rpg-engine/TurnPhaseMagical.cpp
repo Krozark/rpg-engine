@@ -14,7 +14,7 @@ namespace rpg
         return true;
     }
 
-    void TurnPhaseMagical::exec(Entity& entity,EntityTurn& turn)
+    void TurnPhaseMagical::exec(Entity& entity)
     {
         std::cout<<entity<<": Magical Phase"<<std::endl;
     }

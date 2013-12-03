@@ -17,7 +17,6 @@ namespace rpg
 
             Turn& getCurrent()const;
 
-            void add(Entity& entity);
             void start();
             void quit(const Entity& entity);
 
@@ -29,6 +28,9 @@ namespace rpg
 
             void newTurn();
             std::list<Entity*> entitys;
+
+            friend void Entity::setBattle(TurnGameBased&); 
+            void add(Entity& entity);
     };
 }
 #endif

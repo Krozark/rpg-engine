@@ -7,6 +7,7 @@
 namespace rpg
 {
     class EntityTurn;
+    class TurnGameBased;
 
     class Entity
     {
@@ -23,6 +24,9 @@ namespace rpg
 
             friend std::ostream& operator<<(std::ostream& output,const Entity& self);
 
+            void setBattle(TurnGameBased& battle);
+            void exitBattle();
+
         protected:
             friend class EntityTurn;
             void onStartTurn(){};
@@ -32,6 +36,8 @@ namespace rpg
             int mouvement;
             std::string name;
             int hp;
+            TurnGameBased* currentBattlefield;
+
     };
 }
 #endif

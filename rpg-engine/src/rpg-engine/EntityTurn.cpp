@@ -30,7 +30,7 @@ namespace rpg
             stack.pop();
             if (phase->canExec(entity))
             {
-                phase->exec(entity,*this);
+                phase->exec(entity);
             }
             delete phase;
         }
