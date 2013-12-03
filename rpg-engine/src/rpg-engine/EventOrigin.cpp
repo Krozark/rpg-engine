@@ -26,7 +26,7 @@ namespace rpg
         std::cout<<name<<" attack "<<other.name<<std::endl;
 
         bool res = false;
-        if(other.recvOrigin(*this))
+        if(other.recvTarget(*this))
         {
             res = true;
             other.recvDommage(*this,getDommage());
@@ -40,7 +40,7 @@ namespace rpg
         std::cout<<name<<" take "<<dmg<<" dommages from "<<src.name<<std::endl;
     }
 
-    bool EventOrigin::recvOrigin(EventOrigin& src)
+    bool EventOrigin::recvTarget(EventOrigin& src)
     {
         std::cout<<name<<" have been targeted by "<<src.name<<std::endl;
 
@@ -63,7 +63,7 @@ namespace rpg
         std::cout<<name<<" send a counter attack to "<<dest.name<<std::endl;
 
         bool res = false;
-        if(dest.recvOrigin(*this))
+        if(dest.recvTarget(*this))
         {
             res = true;
             dest.recvDommage(*this,getDommage());
