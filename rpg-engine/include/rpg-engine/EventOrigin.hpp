@@ -1,17 +1,17 @@
-#ifndef RPG_EVENTTARGET_HPP
-#define RPG_EVENTTARGET_HPP
+#ifndef RPG_EVENTORIGIN_HPP
+#define RPG_EVENTORIGIN_HPP
 
 #include <string>
 
 namespace rpg
 {
-    class EventTarget
+    class EventOrigin
     {
         public:
-            explicit EventTarget(const std::string& name,int dodge);
+            explicit EventOrigin(const std::string& name,int dodge);
 
-            EventTarget(const EventTarget&) = delete;
-            EventTarget& operator=(const EventTarget&) = delete;
+            EventOrigin(const EventOrigin&) = delete;
+            EventOrigin& operator=(const EventOrigin&) = delete;
 
             virtual int getEvasion();
 
@@ -20,24 +20,24 @@ namespace rpg
             /**
              * \result false if the counter attack is  evaded, true is attack send
              */
-            bool attack(EventTarget& other);
+            bool attack(EventOrigin& other);
             
             int max_evasion_nb;///< number of possible evasion
 
 
         protected:
 
-            bool recvDommage(EventTarget& src,int dmg);
+            bool recvDommage(EventOrigin& src,int dmg);
 
             /**
              * \result true if can take dommage (not escaped)
              */
-            bool recvTarget(EventTarget& src);
+            bool recvOrigin(EventOrigin& src);
 
             /**
              * \result false if the counter attack is  evaded, true is attack send
              */
-            bool sendCounterAttack(EventTarget& dest);
+            bool sendCounterAttack(EventOrigin& dest);
 
 
         private:

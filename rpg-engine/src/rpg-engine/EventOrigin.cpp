@@ -1,4 +1,4 @@
-#include <rpg-engine/EventTarget.hpp>
+#include <rpg-engine/EventOrigin.hpp>
 
 #include <rpg-engine/random.hpp>
 
@@ -7,26 +7,26 @@
 namespace rpg
 {
     
-    EventTarget::EventTarget(const std::string& n,int d) : name(n), dodge(d), max_evasion_nb(0)
+    EventOrigin::EventOrigin(const std::string& n,int d) : name(n), dodge(d), max_evasion_nb(0)
     {
     }
 
-    int EventTarget::getEvasion()
+    int EventOrigin::getEvasion()
     {
         return dodge;
     }
 
-    int EventTarget::getDommage()
+    int EventOrigin::getDommage()
     {
         return 10;
     }
 
-    bool EventTarget::attack(EventTarget& other)
+    bool EventOrigin::attack(EventOrigin& other)
     {
         std::cout<<name<<" attack "<<other.name<<std::endl;
 
         bool res = false;
-        if(other.recvTarget(*this))
+        if(other.recvOrigin(*this))
         {
             res = true;
             other.recvDommage(*this,getDommage());
@@ -34,18 +34,18 @@ namespace rpg
         return res;
     }
 
-    bool EventTarget::recvDommage(EventTarget& src,int dmg)
+    bool EventOrigin::recvDommage(EventOrigin& src,int dmg)
     {
         //\todo call onRecvDommage on all passif spells
         std::cout<<name<<" take "<<dmg<<" dommages from "<<src.name<<std::endl;
     }
 
-    bool EventTarget::recvTarget(EventTarget& src)
+    bool EventOrigin::recvOrigin(EventOrigin& src)
     {
         std::cout<<name<<" have been targeted by "<<src.name<<std::endl;
 
         bool res = true;
-        //\todo call onRecvTarget on all passif spells
+        //\todo call onRecvOrigin on all passif spells
         max_evasion_nb--;
         if(max_evasion_nb >=0 and random(1,100) <= getEvasion())
         {
@@ -57,13 +57,13 @@ namespace rpg
         return res;
     }
 
-    bool EventTarget::sendCounterAttack(EventTarget& dest)
+    bool EventOrigin::sendCounterAttack(EventOrigin& dest)
     {
         //\todo call onSendCounterAttack on all passif spells
         std::cout<<name<<" send a counter attack to "<<dest.name<<std::endl;
 
         bool res = false;
-        if(dest.recvTarget(*this))
+        if(dest.recvOrigin(*this))
         {
             res = true;
             dest.recvDommage(*this,getDommage());
