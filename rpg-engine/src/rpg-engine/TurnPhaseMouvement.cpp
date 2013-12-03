@@ -14,7 +14,7 @@ namespace rpg
         return entity.getMouvement()>0;
     }
 
-    void TurnPhaseMouvement::exec(Entity& entity,Turn& turn)
+    void TurnPhaseMouvement::exec(Entity& entity,EntityTurn& turn)
     {
         std::cout<<"Mouvement Phase"<<std::endl;
     }

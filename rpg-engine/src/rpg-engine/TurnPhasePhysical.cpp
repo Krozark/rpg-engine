@@ -14,7 +14,7 @@ namespace rpg
         return true;
     }
 
-    void TurnPhasePhysical::exec(Entity& entity,Turn& turn)
+    void TurnPhasePhysical::exec(Entity& entity,EntityTurn& turn)
     {
         std::cout<<"Physical Phase"<<std::endl;
     }

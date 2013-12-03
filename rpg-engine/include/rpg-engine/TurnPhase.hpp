@@ -5,7 +5,7 @@
 
 namespace rpg
 {
-    class Turn;
+    class EntityTurn;
 
     class TurnPhase
     {
@@ -16,9 +16,9 @@ namespace rpg
             TurnPhase& operator=(const TurnPhase&) = delete;
 
         protected:
-            friend class Turn;
+            friend class EntityTurn;
             virtual bool canExec(const Entity& entity) = 0;
-            virtual void exec(Entity& entity,Turn& turn) = 0;
+            virtual void exec(Entity& entity,EntityTurn& turn) = 0;
 
         private:
 

@@ -2,7 +2,7 @@
 #include <rpg-engine/EventOrigin.hpp>
 #include <rpg-engine/random.hpp>
 
-#include <rpg-engine/Turn.hpp>
+#include <rpg-engine/EntityTurn.hpp>
 #include <rpg-engine/Entity.hpp>
 
 int main(int argc,char* argv[])
@@ -18,7 +18,7 @@ int main(int argc,char* argv[])
     A.attack(B);
 
     rpg::Entity C;
-    rpg::Turn turn(C);
+    rpg::EntityTurn turn(C);
     turn.initBasic();
     turn.start();
     return 0;

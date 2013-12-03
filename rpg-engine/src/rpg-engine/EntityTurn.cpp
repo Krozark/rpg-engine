@@ -1,4 +1,4 @@
-#include <rpg-engine/Turn.hpp>
+#include <rpg-engine/EntityTurn.hpp>
 
 #include <rpg-engine/TurnPhaseMouvement.hpp>
 #include <rpg-engine/TurnPhasePhysical.hpp>
@@ -7,11 +7,11 @@
 namespace rpg
 {
     
-    Turn::Turn(Entity& related_entity) : entity(related_entity)
+    EntityTurn::EntityTurn(Entity& related_entity) : entity(related_entity)
     {
     }
 
-    void Turn::initBasic()
+    void EntityTurn::initBasic()
     {
         stack.push(new TurnPhaseMouvement());
         stack.push(new TurnPhasePhysical());
@@ -20,7 +20,7 @@ namespace rpg
         stack.push(new TurnPhaseMouvement());
     }
 
-    void Turn::start()
+    void EntityTurn::start()
     {
         entity.onStartTurn();
 

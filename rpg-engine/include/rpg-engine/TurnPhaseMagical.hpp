@@ -14,7 +14,7 @@ namespace rpg
 
         protected:
             virtual bool canExec(const Entity& entity);
-            virtual void exec(Entity& entity,Turn& turn);
+            virtual void exec(Entity& entity,EntityTurn& turn);
 
         private:
     };

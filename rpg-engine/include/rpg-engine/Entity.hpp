@@ -3,7 +3,7 @@
 
 namespace rpg
 {
-    class Turn;
+    class EntityTurn;
 
     class Entity
     {
@@ -16,7 +16,7 @@ namespace rpg
             inline int getMouvement()const{return mouvement;};
 
         protected:
-            friend class Turn;
+            friend class EntityTurn;
             void onStartTurn(){};
             void onEndTurn(){};
 
