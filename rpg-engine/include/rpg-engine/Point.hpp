@@ -1,6 +1,8 @@
 #ifndef RPG_MATH_POINT_HPP
 #define RPG_MATH_POINT_HPP
 
+#include <list>
+
 namespace rpg
 {
     namespace math
@@ -12,6 +14,9 @@ namespace rpg
                 Point(const Point&) = delete;
                 Point& operator=(const Point&) = delete;
 
+                Point(Point<T>&&) = default;
+                Point<T>& operator=(Point<T>&&) = default;
+
                 Point(T x=0,T y=0);
 
                 T x;
@@ -19,13 +24,17 @@ namespace rpg
 
                 T z()const;
 
-                Point<T>& operator+(const Point& other);
-                Point<T>& operator-(const Point& other);
+                Point<T> operator+(const Point& other);
+                Point<T> operator-(const Point& other);
 
-                Point<T>& operator+(T nb);
-                Point<T>& operator-(T nb);
+                template <typename U> Point<T>& operator+(U nb);
+                template <typename U> Point<T>& operator-(U nb);
+                template <typename U> Point<T>& operator*(U nb);
+                template <typename U> Point<T>& operator/(U nb);
 
                 static T getHexDistance(const Point<T>& a,const Point<T>& b);
+                static void getHexPath(const Point<T>& a,const Point<T>& b/**\todo ,std::funtion(Point<T>&) function*/);
+                static std::list<Point<T>> getHexRange(const Point<T>& a,int range);
 
         };
 
