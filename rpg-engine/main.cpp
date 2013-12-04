@@ -4,6 +4,7 @@
 
 #include <rpg-engine/TurnGameBased.hpp>
 #include <rpg-engine/Entity.hpp>
+#include <rpg-engine/Point.hpp>
 
 int main(int argc,char* argv[])
 {
@@ -21,12 +22,27 @@ int main(int argc,char* argv[])
         ,D("D",50)
         ,E("E",70);
 
+    rpg::math::Point<int> a(0,0),
+        b(1,1),
+        c(2,0),
+        d(10,5),
+        e(-2,0),
+        f(-10,-5);
+
+    std::cout<<rpg::math::Point<int>::getHexDistance(a,a)<<std::endl;
+    std::cout<<rpg::math::Point<int>::getHexDistance(a,b)<<std::endl;
+    std::cout<<rpg::math::Point<int>::getHexDistance(a,c)<<std::endl;
+    std::cout<<rpg::math::Point<int>::getHexDistance(a,d)<<std::endl;
+    std::cout<<rpg::math::Point<int>::getHexDistance(a,e)<<std::endl;
+    std::cout<<rpg::math::Point<int>::getHexDistance(a,f)<<std::endl;
+    std::cout<<rpg::math::Point<int>::getHexDistance(e,e)<<std::endl;
+
     rpg::TurnGameBased fight;
     C.setBattle(fight);
     //fight.add(D);
     //fight.add(E);
 
-    fight.start();
+    //fight.start();
 
     return 0;
 }
