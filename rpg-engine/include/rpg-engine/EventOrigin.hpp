@@ -16,14 +16,18 @@ namespace rpg
             EventOrigin(const EventOrigin&) = delete;
             EventOrigin& operator=(const EventOrigin&) = delete;
 
-            virtual int getEvasion();
+            int getEvasion()const;
 
-            virtual int getDommage();
+            int getDommage()const;
 
             /**
              * \result false if the counter attack is  evaded, true is attack send
              */
-            bool attack(EventOrigin& other);
+            bool attack(char type,EventOrigin& other);
+
+            enum type_atk {PHYSICAL=0,
+                           MAGICAL=1<<1,
+                           HYBRID=1<<2};
             
 
 
@@ -35,20 +39,11 @@ namespace rpg
         /**
         * \result the dommage modifier (substract to dommage)
         */
-        virtual int onRecvDommage(int dommage,const EventOrigin& src,int rank,int element){};
-        virtual int onRecvDommageMagic(int dommage,const EventOrigin& src,int rank,int element){};
-        virtual int onRecvDommagePhysic(int dommage,const EventOrigin& src,int rank, int element){};
-        virtual int onRecvDommageHybrid(int dommage,const EventOrigin& src,int rank,int element){};
+        virtual int onRecvDommage(char type,int dommage,const EventOrigin& src,int rank,int element){};
 
-        virtual void onRecvTarget(){};
-        virtual void onRecvTargetMagic(){};
-        virtual void onRecvTargetPhysic(){};
-        virtual void onRecvTargetHybrid(){};
+        virtual void onRecvTarget(char type){};
 
         virtual void onSendDommage(){};
-        virtual void onSendDommageMagic(){};
-        virtual void onSendDommagePhysic(){};
-        virtual void onSendDommageHybrid(){};
 
         virtual void onEvasion(){};
 
@@ -57,17 +52,14 @@ namespace rpg
 
         private:
 
-            bool recvDommage(EventOrigin& src,int dmg);
+            bool recvDommage(char type,EventOrigin& src,int dmg);
 
             /**
              * \result true if can take dommage (not escaped)
              */
-            bool recvTarget(EventOrigin& src);
+            bool recvTarget(char type,EventOrigin& src);
 
-            /**
-             * \result false if the counter attack is  evaded, true is attack send
-             */
-            bool sendCounterAttack(EventOrigin& dest);
+            bool sendCounterAttack(char type,EventOrigin& dest);
 
             std::string name;
             int dodge;

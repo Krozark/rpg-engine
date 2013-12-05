@@ -10,17 +10,14 @@ int main(int argc,char* argv[])
 {
     rand_init();
 
-    rpg::EventOrigin A("A",70),
-    B("B",50);
+    //rpg::EventOrigin A("A",70),
+    //B("B",50);
 
     //A.max_evasion_nb = 1;
     //B.max_evasion_nb = 10;
 
-    A.attack(B);
+    //A.attack(rpg::EventOrigin::type_atk::PHYSICAL,B);
 
-    rpg::Entity C("C",40)
-        ,D("D",50)
-        ,E("E",70);
 
     rpg::math::Point<int> a(0,0),
         b(1,1),
@@ -37,8 +34,12 @@ int main(int argc,char* argv[])
     std::cout<<rpg::math::Point<int>::getHexDistance(a,f)<<std::endl;
     std::cout<<rpg::math::Point<int>::getHexDistance(e,e)<<std::endl;
 
+    /*rpg::Entity C("C",40)
+        ,D("D",50)
+        ,E("E",70);
+
     rpg::TurnGameBased fight;
-    C.setBattle(fight);
+    C.setBattle(fight);*/
     //fight.add(D);
     //fight.add(E);
 

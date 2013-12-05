@@ -11,36 +11,36 @@ namespace rpg
     {
     }
 
-    int EventOrigin::getEvasion()
+    int EventOrigin::getEvasion()const
     {
         return dodge;
     }
 
-    int EventOrigin::getDommage()
+    int EventOrigin::getDommage()const
     {
         return 10;
     }
 
-    bool EventOrigin::attack(EventOrigin& other)
+    bool EventOrigin::attack(char type,EventOrigin& other)
     {
         std::cout<<name<<" attack "<<other.name<<std::endl;
 
         bool res = false;
-        if(other.recvTarget(*this))
+        if(other.recvTarget(type,*this))
         {
             res = true;
-            other.recvDommage(*this,getDommage());
+            other.recvDommage(type,*this,getDommage());
         }
         return res;
     }
 
-    bool EventOrigin::recvDommage(EventOrigin& src,int dmg)
+    bool EventOrigin::recvDommage(char type,EventOrigin& src,int dmg)
     {
         //\todo call onRecvDommage on all passif spells
         std::cout<<name<<" take "<<dmg<<" dommages from "<<src.name<<std::endl;
     }
 
-    bool EventOrigin::recvTarget(EventOrigin& src)
+    bool EventOrigin::recvTarget(char type,EventOrigin& src)
     {
         std::cout<<name<<" have been targeted by "<<src.name<<std::endl;
 
@@ -51,22 +51,22 @@ namespace rpg
         {
             std::cout<<name<<" escape the attack of "<<src.name<<std::endl;
             res = false;
-            sendCounterAttack(src);
+            sendCounterAttack(type,src);
         }
         max_evasion_nb++;
         return res;
     }
 
-    bool EventOrigin::sendCounterAttack(EventOrigin& dest)
+    bool EventOrigin::sendCounterAttack(char type,EventOrigin& dest)
     {
         //\todo call onSendCounterAttack on all passif spells
         std::cout<<name<<" send a counter attack to "<<dest.name<<std::endl;
 
         bool res = false;
-        if(dest.recvTarget(*this))
+        if(dest.recvTarget(type,*this))
         {
             res = true;
-            dest.recvDommage(*this,getDommage());
+            dest.recvDommage(type,*this,getDommage());
         }
         return res;
     }

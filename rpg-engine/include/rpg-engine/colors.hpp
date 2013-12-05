@@ -19,11 +19,11 @@
 #define RPG_COLOR_TITLE RPG_COLOR_YELLOW
 
 #define RPG_H1(txt) std::cout<<RPG_COLOR_TITLE<<"=======\t "<<txt<<" \t======="<<RPG_COLOR_DEFAULT<<std::endl
-
 #define RPG_H2(txt) std::cout<<RPG_COLOR_TITLE<<"+++ "<<txt<<" +++"<<RPG_COLOR_DEFAULT<<std::endl
-
 #define RPG_H3(txt) std::cout<<RPG_COLOR_TITLE<<"--- "<<txt<<" ---"<<RPG_COLOR_DEFAULT<<std::endl
-
 #define RPG_QUESTION(txt) std::cout<<RPG_COLOR_QUESTION<<txt<<RPG_COLOR_DEFAULT<<"\n>"
+#define RPG_WARNING(txt) std::cout<<"/?\\ " RPG_COLOR_WARNING<<txt<<" /?\\" RPG_COLOR_DEFAULT<<std::endl;
+#define RPG_ERROR(txt) std::cout<<"/!\\ " RPG_COLOR_ERROR<<txt<<" /!\\" RPG_COLOR_DEFAULT<<std::endl;
+
 
 #endif

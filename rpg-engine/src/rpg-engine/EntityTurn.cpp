@@ -27,7 +27,7 @@ namespace rpg
 
     void EntityTurn::start()
     {
-        entity.onStartTurn();
+        entity.slotBeginTurn(*this);
 
         if (not skipped)
         {
@@ -48,6 +48,6 @@ namespace rpg
             ///\todo entity.onSkip()
         }
 
-        entity.onEndTurn();
+        entity.slotEndTurn(*this);
     }
 }

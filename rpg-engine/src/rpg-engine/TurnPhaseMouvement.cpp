@@ -13,7 +13,7 @@ namespace rpg
 
     bool TurnPhaseMouvement::canExec(const Entity& entity)
     {
-        return entity.getMouvement()>0;
+        return true;///\todo entity.getMouvement()>0;
     }
 
     void TurnPhaseMouvement::exec(Entity& entity)

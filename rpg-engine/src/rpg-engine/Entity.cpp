@@ -1,7 +1,6 @@
 #include <rpg-engine/Entity.hpp>
 
 #include <rpg-engine/TurnGameBased.hpp>
-#include <rpg-engine/EntityControlerConsol.hpp>
 
 #include <rpg-engine/random.hpp>
 #include <rpg-engine/colors.hpp>
@@ -9,18 +8,14 @@
 namespace rpg
 {
     
-    Entity::Entity(const std::string& n,int h) : mouvement(3), name(n), hp(h),currentBattlefield(nullptr), controler(new EntityControlerConsol(*this))
+    Entity::Entity() : currentBattlefield(nullptr)
     {
     }
 
-    int Entity::getDommage()const
-    {
-        return 10 + random(5,15);
-    }
-    
     std::ostream& operator<<(std::ostream& output,const Entity& self)
     {
-        return (output<<self.name);
+        self.print(output);
+        return output;
     }
 
     void Entity::setBattle(TurnGameBased& battle)
@@ -39,25 +34,20 @@ namespace rpg
         currentBattlefield = nullptr;
     }
 
-    void Entity::move(int x,int y)
-    {
-        position.x+=x;
-        position.y+=y;
-    }
 
-    void Entity::onStartTurn()
+    void Entity::slotBeginTurn(EntityTurn& myturn)
     {
-        RPG_H1("Debut du tour de "<<name);
+        RPG_H1("Debut du tour de "<<*this);
         ///\todo loop on effect triggers
+        this->onBeginTurn();
         
     }
 
-    void Entity::onEndTurn() 
+    void Entity::slotEndTurn(EntityTurn& myturn) 
     {
+        RPG_H1("Fin du tour de "<<*this);
+
+        this->onEndTurn();
     }
 
-    EntityControler& Entity::getControler()
-    {
-        return *controler;
-    }
 }

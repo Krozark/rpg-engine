@@ -1,10 +1,7 @@
 #ifndef RPG_ENTITY_HPP
 #define RPG_ENTITY_HPP
 
-#include <string>
 #include <iostream>
-
-#include <rpg-engine/Point.hpp>
 
 namespace rpg
 {
@@ -23,44 +20,45 @@ namespace rpg
     class Entity
     {
         public:
-            Entity(const std::string& name,int hp);
+            Entity();
             Entity(const Entity&) = delete;
             Entity& operator=(const Entity&) = delete;
 
 
-            inline int getMouvement()const{return mouvement;};
-            int getDommage()const;
+            //inline int getMouvement()const{return mouvement;};
+            //int getDommage()const;
 
-            inline bool isAlive()const {return hp>0;}
+            //inline bool isAlive()const {return hp>0;}
 
             friend std::ostream& operator<<(std::ostream& output,const Entity& self);
 
             void setBattle(TurnGameBased& battle);
             void exitBattle();
 
-            void move(int x,int y);
+            virtual void moveOf(int x,int y) = 0;
 
         protected:
+            /** Helpers **/
+            virtual EntityControler& getControler() = 0;
+            virtual void print(std::ostream&)const = 0;
+
+            /** Events **/
+            virtual void onBeginTurn() = 0;
+            virtual void onEndTurn() = 0;
+
+            /** Attrs */
+            TurnGameBased* currentBattlefield;
+
+        private:
             friend class EntityTurn;
             friend class TurnPhaseMouvement;
             friend class TurnPhaseMagical;
             friend class TurnPhasePhysical;
 
-            void onStartTurn();///<\todo as virtual
-            void onEndTurn();///<\todo as virtual
+            /** Trigger events **/
+            void slotBeginTurn(EntityTurn& myturn);
+            void slotEndTurn(EntityTurn& myturn);
 
-            EntityControler& getControler();///<\todo as virtual
-
-        private:
-            int mouvement;
-            std::string name;
-            int hp;
-            TurnGameBased* currentBattlefield;
-
-            math::Point<int> position;
-
-
-            EntityControler* controler;///<\todo remove it and replace as globale for each clase heritate
     };
 }
 #endif

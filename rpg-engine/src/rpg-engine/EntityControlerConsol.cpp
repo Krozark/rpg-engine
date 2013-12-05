@@ -34,33 +34,33 @@ namespace rpg
             {
                 /* move */
                 case '1' :
-                    related_entity.move(0,-1);
+                    related_entity.moveOf(0,-1);
                     c=0;
                     break;
                 case '2' :
-                    related_entity.move(1,-1);
+                    related_entity.moveOf(1,-1);
                     c=0;
                     break;
                 case '3':
-                    related_entity.move(1,0);
+                    related_entity.moveOf(1,0);
                     c=0;
                     break;
                 case '4':
-                    related_entity.move(0,1);
+                    related_entity.moveOf(0,1);
                     c=0;
                     break;
                 case '5':
-                    related_entity.move(-1,1);
+                    related_entity.moveOf(-1,1);
                     c=0;
                     break;
                 case '6':
-                    related_entity.move(-1,0);
+                    related_entity.moveOf(-1,0);
                     c=0;
                     break;
                 /* spells */
                 case 's':
                 case 'S':
-                    std::cout<<RPG_COLOR_WARNING<<"/!\\ Pas implémanté. /!\\"<<RPG_COLOR_DEFAULT<<std::endl;
+                    RPG_WARNING("Pas implémanté");
                     c=0;
                     break;
                 /* Quit */
@@ -68,7 +68,7 @@ namespace rpg
                 case 'Q':
                     break;
                 default:
-                    std::cout<<RPG_COLOR_ERROR<<"/!\\ Erreur de saisie. /!\\"<<RPG_COLOR_DEFAULT<<std::endl;
+                    RPG_ERROR("Erreur de saisie");
                     c = 0;
                     break;
             }
