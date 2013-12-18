@@ -2,6 +2,9 @@
 #define RPG_ENTITY_HPP
 
 #include <iostream>
+#include <rpg-engine/Element.hpp>
+#include <rpg-engine/Point.hpp>
+#include <rpg-engine/EntityStats.hpp>
 
 namespace rpg
 {
@@ -35,19 +38,36 @@ namespace rpg
             void setBattle(TurnGameBased& battle);
             void exitBattle();
 
-            virtual void moveOf(int x,int y) = 0;
+            void moveOf(int x,int y);
+
 
         protected:
             /** Helpers **/
             virtual EntityControler& getControler() = 0;
             virtual void print(std::ostream&)const = 0;
 
+            virtual void computeMaxStats() = 0;
+
             /** Events **/
             virtual void onBeginTurn() = 0;
             virtual void onEndTurn() = 0;
 
+            virtual bool takeDommage(int dommage,int type,Elements element,int range=0,int min=0) = 0;
+
             /** Attrs */
             TurnGameBased* currentBattlefield;
+
+            math::Point<int> position;
+            
+            EntityStats max_stats;
+            EntityStats tmp_stats;
+
+            int turn_def,
+                turn_mdef,
+                turn_esq,
+                turn_atq,
+                turn_mvt;
+
 
         private:
             friend class EntityTurn;

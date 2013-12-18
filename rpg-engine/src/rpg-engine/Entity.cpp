@@ -18,6 +18,12 @@ namespace rpg
         return output;
     }
 
+    void Entity::moveOf(int x,int y)
+    {
+        position.x+=x;
+        position.y+=y;
+    }
+
     void Entity::setBattle(TurnGameBased& battle)
     {
         if(currentBattlefield != nullptr)
@@ -39,8 +45,14 @@ namespace rpg
     {
         RPG_H1("Debut du tour de "<<*this);
         ///\todo loop on effect triggers
+        //reset mvt, esquive
+        turn_def = tmp_stats.getDiceDef().roll();
+        turn_mdef = tmp_stats.getDiceMdef().roll();
+        turn_esq = tmp_stats.getNbEsq();
+        turn_atq = tmp_stats.getNbAtq();
+        turn_mvt = tmp_stats.getMvt();
+
         this->onBeginTurn();
-        
     }
 
     void Entity::slotEndTurn(EntityTurn& myturn) 

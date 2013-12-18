@@ -2,7 +2,6 @@
 #define RPG_ENTITYPLAYER_HPP
 
 #include <rpg-engine/Entity.hpp>
-#include <rpg-engine/Point.hpp>
 
 #include <string>
 
@@ -14,8 +13,6 @@ namespace rpg
             EntityPlayer();
             EntityPlayer(const EntityPlayer&) = delete;
             EntityPlayer& operator=(const EntityPlayer&) = delete;
-
-            virtual void moveOf(int x,int y);
 
         protected:
             /** Helpers **/
@@ -33,7 +30,6 @@ namespace rpg
             std::string name;
             int lvl;
             int exp;
-            math::Point<int> position;
 
             //user                = models.ForeignKey(User,blank=True,null=True)
             //avatar              = models.ImageField(upload_to="/public/uploads",blank=True,null=True)

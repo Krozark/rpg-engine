@@ -12,11 +12,6 @@ namespace rpg
         controler = new EntityControlerConsol(*this);
     }
 
-    void EntityPlayer::moveOf(int x,int y)
-    {
-        position.x+=x;
-        position.y+=y;
-    }
 
     /*** Protected ***/
     void EntityPlayer::print(std::ostream& output)const

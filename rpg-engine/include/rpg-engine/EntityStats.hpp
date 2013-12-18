@@ -1,6 +1,8 @@
 #ifndef RPG_ENTITYSTATS_HPP
 #define RPG_ENTITYSTATS_HPP
 
+#include <rpg-engine/Dice.hpp>
+
 namespace rpg
 {
     class EntityStats
@@ -36,6 +38,38 @@ namespace rpg
 
             EntityStats operator+(int val)const;
             EntityStats operator-(int val)const;
+
+            ///\todo Dice getDiceXXX();
+            ///\todo static Dice getDiceXXX(int value);
+            //turn_esq = tmp_stats.getEsqNb();
+            //turn_atq = tmp_stats.getAtqNb();
+            
+            static Dice getDiceRef(int value);
+            static Dice getDiceRefLibre(int value);
+            static Dice getDiceFrc(int value); 
+            static Dice getDiceInt(int value);
+            static Dice getDiceDef(int value);
+            static Dice getDiceMdef(int value);
+            static Dice getDiceEsq(int value);
+            static Dice getDiceDex(int value);
+            static Dice getDiceChc(int value);
+            static Dice getDiceChrm(int value);
+
+            static int getNbEsq(int value);
+            static int getNbAtq(int value);
+
+            Dice getDiceFrc()const; 
+            Dice getDiceInt()const;
+            Dice getDiceDef()const;
+            Dice getDiceMdef()const;
+            Dice getDiceEsq()const;
+            Dice getDiceDex()const;
+            Dice getDiceChc()const;
+            Dice getDiceChrm()const;
+
+
+            int getNbEsq()const;
+            int getNbAtq()const;
 
         protected:
 
